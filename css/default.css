@@ -1,0 +1,9 @@
+/*파일에 전체적인 영향을 주는 CSS 파일*/
+/*id : # , class : .  */
+body {
+    background-color: pink;
+}
+
+* {
+    font-family: 'Nanum Pen Script', cursive;
+}
