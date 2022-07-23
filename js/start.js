@@ -5,18 +5,30 @@ function addAnswer(answerText,qIdx){
     var a = document.querySelector('.answerBox');
     var answer = document.createElement('button'); //document.createelement()메서드: 지정한 tagname(button)의 html 요소를 만들어 반환한다.
     answer.classList.add('answerList');
+    answer.classList.add('my-3');
+    answer.classList.add('py-5');
+    answer.classList.add('mx-auto');
+    answer.classList.add('fadeIn');
+    
+
     a.appendChild(answer); //answer라는 버튼이 a에 소속될수있도록 만들어줌
     answer.innerHTML = answerText;
     answer.addEventListener("click", function(){
        var children = document.querySelectorAll('.answerList');
        for(let i=0; i<children.length; i++){
         children[i].disabled = true;
-        children[i].style.display = 'none';
+        children[i].style.WebkitAnimation ="fadeOut 0.5s";
+        children[i].style.animation = 'fadeOut 0.5s';
        }
-       goNext(++qIdx)
-    },false);
-}
-
+       setTimeout(() => {
+        for(let i = 0; i < children.length; i++){
+          children[i].style.display = 'none';
+        }
+        goNext(++qIdx);
+      },450)
+    }, false);
+  }
+  
 
 function goNext(qIdx){
     var q = document.querySelector(".qBox"); //html에 클래스 qbox 선택
