@@ -1,6 +1,6 @@
 const main = document.querySelector("#main"); //index.html에 아이디 main을 정의?
 const qna = document.querySelector("#qna"); // index.html에 아이디 qna 
-
+const endPoint = 12;
 function addAnswer(answerText,qIdx){
     var a = document.querySelector('.answerBox');
     var answer = document.createElement('button'); //document.createelement()메서드: 지정한 tagname(button)의 html 요소를 만들어 반환한다.
@@ -36,7 +36,9 @@ function goNext(qIdx){
     for(let i in qnaList[qIdx].a){
         addAnswer(qnaList[qIdx].a[i].answer,qIdx);
     }
-
+    var status = document.querySelector('.statusBar');
+    status.style.width = (100/endPoint)*(qIdx + 1)+'%';
+    
 }
 
 function begin(){ //함수 begin : 시작버튼을 누르면 애니메이션을 이용하여 흐릿하게 화면전환
